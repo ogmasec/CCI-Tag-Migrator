@@ -70,3 +70,27 @@ OLD_TENANT_TOKEN = "your_source_read_token"
 
 NEW_TENANT_URL = "[https://dest-tenant.goskope.com](https://dest-tenant.goskope.com)"
 NEW_TENANT_TOKEN = "your_dest_read_write_token"
+
+## 🔍 Logging & Troubleshooting
+
+Every execution automatically generates a log file named `migration_log.log` in the same directory as the script.
+
+### Using the Log File
+* **Log Level:** `DEBUG`
+* **Content:** This file records every step, including the full JSON payloads sent to the API and the raw responses received.
+* **Tip:** If the script fails, open this file immediately. It often contains specific error messages from Netskope that are not displayed in the console.
+
+### Common Errors
+
+* **`403 Forbidden`**
+  * **Cause:** The API Token provided does not have the required permissions.
+  * **Solution:** Verify in the Netskope UI that your Destination Token has **Read & Write** permissions specifically for the `/api/v2/services/cci/tags` endpoint.
+
+* **`404 Not Found` (during Rollback)**
+  * **Cause:** The script attempted to delete a tag that does not exist on the tenant.
+  * **Context:** This is common if you run Step 4 (Rollback) multiple times.
+  * **Solution:** No action needed. The log will indicate that the tag might have already been deleted.
+
+* **`400 Bad Request`**
+  * **Cause:** The data being sent is invalid (e.g., a tag name containing unauthorized special characters).
+  * **Solution:** Check the `migration_log.log` file to read the specific error message returned by the API in the response body.
