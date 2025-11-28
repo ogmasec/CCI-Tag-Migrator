@@ -1,3 +1,5 @@
+> **⚠️ Disclaimer:** This script is provided "as is" without warranty of any kind. Always test the migration process on a limited scope (using Mode 3, Option 2) before performing a full bulk migration on a production tenant.
+
 # Netskope CCI Tag Migrator
 
 A Python utility designed to automate the migration of Cloud Confidence Index (CCI) tags and their associated applications from one Netskope tenant to another.
