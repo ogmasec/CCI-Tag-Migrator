@@ -70,7 +70,7 @@ OLD_TENANT_TOKEN = "your_source_read_token"
 
 NEW_TENANT_URL = "[https://dest-tenant.goskope.com](https://dest-tenant.goskope.com)"
 NEW_TENANT_TOKEN = "your_dest_read_write_token"
-
+```
 ## 🔍 Logging & Troubleshooting
 
 Every execution automatically generates a log file named `migration_log.log` in the same directory as the script.
